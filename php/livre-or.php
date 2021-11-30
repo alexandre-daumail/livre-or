@@ -1,8 +1,8 @@
 
 <?php
 $pageTitle= 'Livre d\'or';
-include'../assets/styles/header.php';
-require'../assets/styles/config.php';
+include'../assets/require/header.php';
+require'../assets/require/config.php';
 
 /********************************************************************************************************** */
 //Affichage des messages du livre d'or//
@@ -14,12 +14,11 @@ if ($nbLignes > 0){
     while ( $row = mysqli_fetch_assoc($req)){
         $nom = $row['login'];
         $comm = $row['commentaire'];
-        $date = $row['date'];
-
+        $date = date_create($row['date']);
         $comm = nl2br($comm);
 
         echo'<div class="comm"> Posté le ' . 
-            $date . ' par ' .  $nom . ':<br>' .
+        date_format($date, 'd/m/Y H:i:s') . ' par ' .  $nom . ':<br>' .
             $comm . '</div><hr>';
     }
 }
@@ -35,7 +34,4 @@ else{
 
 
 /********************************************************************************************************** */
-?>
-</body>
-
-</html>
+ include '../assets/require/footer.php'; ?>

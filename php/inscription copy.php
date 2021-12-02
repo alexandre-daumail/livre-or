@@ -27,27 +27,28 @@ if (isset($_REQUEST['login'], $_REQUEST['password'])) {
     }
 } else {
 ?>
-    <form action="" method="post">
-        <div class="container">
-            <h1>Création d'un compte utilisateur</h1>
-            <hr>
+    <div class="form">
+        <form action="" method="post" autocomplete="off">
+            <div class="container">
+                <h1>Création d'un compte utilisateur</h1>
+                <hr>
 
-            <label for="login">Nom d'utilisateur</label>
-            <input type="text" class="box-input" name="login" id="login" placeholder="Nom d'utilisateur" required />
+                <label for="login">Nom d'utilisateur</label>
+                <input type="text" class="box-input" name="login" id="login" placeholder="Nom d'utilisateur" required />
 
-            <label for="psw"><b>Mot de passe</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                <label for="psw"><b>Mot de passe</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-            <label for="psw-repeat"><b>Confirmation du mot de passe</b></label>
-            <input type="password" placeholder="Confirmer" name="psw-repeat" id="psw-repeat" required>
+                <label for="psw-repeat"><b>Confirmation du mot de passe</b></label>
+                <input type="password" placeholder="Confirmer" name="psw-repeat" id="psw-repeat" required>
+                <hr>
 
-            <hr>
-
-            <button type="submit" class="registerbtn">Inscription</button>
-        </div>
-        <div class="container signin">
-            <p class="box-register">Déjà inscrit? <a href="connexion.php">Connectez-vous ici</a></p>
-        </div>
-    </form>
+                <button type="submit" class="registerbtn">Inscription</button>
+            </div>
+            <div class="container signin">
+                <p class="box-register">Déjà inscrit? <a href="connexion.php">Connectez-vous ici</a></p>
+            </div>
+        </form>
+    </div>
 <?php }
 include '../assets/require/footer.php'; ?>

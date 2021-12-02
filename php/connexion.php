@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'Page Connexion';
+$title = 'Page Connexion';
 
 include'../assets/require/header.php';
 require'../assets/require/config.php';

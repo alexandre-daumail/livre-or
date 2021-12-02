@@ -1,4 +1,25 @@
 <?php
-$pageTitle = 'Ajouter un commentaire';
-include'assets/require/header.php';
+$title = 'Accueil';
 require'assets/require/config.php';
+include'assets/require/header.php';
+?>
+
+  
+  <aside class="aside primary">
+    <p>Lorem Salu bissame ! Wie geht's les samis ? Hans apporte moi une Wurschtsalad avec un picon bitte, s'il te plaît. Voss ? Une Carola et du Melfor ? Yo dû, espèce de Knäckes, ch'ai dit un picon !</p>
+  </aside>
+  
+  <main id="main" role="main" class="main">
+    <p>Yoo ch'ai lu dans les DNA que le Racing a encore perdu contre Oberschaeffolsheim. Verdammi et moi ch'avais donc parié deux knacks et une flammekueche. Ah so ? T'inquiète, ch'ai ramené du schpeck, du chambon, un kuglopf et du schnaps dans mon rucksack. Allez, s'guelt ! Wotch a kofee avec ton bibalaekaess et ta wurscht ? Yeuh non che suis au réchime, je ne mange plus que des Grumbeere light et che fais de la chym avec Chulien. Tiens, un rottznoz sur le comptoir.</p>
+  </main>
+  
+  <article class="article">
+    Wotch a kofee avec ton bibalaekaess et ta wurscht ? Yeuh non che suis au réchime
+  </article>
+  
+  <aside class="aside secondary">
+    <p>Lorem Salu bissame ! Wie geht's les samis ? Hans apporte moi une Wurschtsalad avec un picon bitte, s'il te plaît. Voss ? Une Carola et du Melfor ? Yo dû, espèce de Knäckes, ch'ai dit un picon !</p>
+  </aside>
+  
+
+<?php include 'assets/require/footer.php'; ?>

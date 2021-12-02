@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'Traitement commentaire';
+$title = 'Traitement commentaire';
 include '../require/header.php';
 require '../require/config.php';
 
@@ -21,7 +21,7 @@ if (isset($res)) {
          <h3>Vous avez envoyé le commentaire avec succès.</h3>
          <p>Vous allez être redirigés vers le livre d'or.</p>
          </div>";
-    header("refresh:5; url=../../php/livre-or.php");
+    header("refresh:2; url=../../php/livre-or.php");
 } else {
     echo "L'envoi du commentaire a échoué";
 }

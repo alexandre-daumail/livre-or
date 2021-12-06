@@ -4,14 +4,14 @@ $title = 'Création de profil';
 include '../assets/require/header.php';
 require '../assets/require/config.php';
 
-if (isset($_REQUEST['login'], $_REQUEST['password'])) {
+if (isset($_REQUEST['login'], $_REQUEST['psw'])) {
 
-    if ($_REQUEST['password'] === $_REQUEST['conf_mdp']) {
+    if ($_REQUEST['psw'] === $_REQUEST['conf_mdp']) {
         // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
         $login = stripslashes($_REQUEST['login']);
         $login = mysqli_real_escape_string($conn, $login);
         // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
-        $password = stripslashes($_REQUEST['password']);
+        $password = stripslashes($_REQUEST['psw']);
         $password = mysqli_real_escape_string($conn, $password);
 
         $query = "INSERT into `utilisateurs` (login,  password)
@@ -27,27 +27,29 @@ if (isset($_REQUEST['login'], $_REQUEST['password'])) {
     }
 } else {
 ?>
-    <form action="" method="post">
-        <div class="container">
-            <h1>Création d'un compte utilisateur</h1>
-            <hr>
+    <div class="content-area">
+        <form action="" method="post">
+            <div class="container">
+                <h1>Création d'un compte utilisateur</h1>
+                <hr>
 
-            <label for="login">Nom d'utilisateur</label>
-            <input type="text" class="box-input" name="login" id="login" placeholder="Nom d'utilisateur" required />
+                <label for="login">Nom d'utilisateur</label>
+                <input type="text" class="box-input" name="login" id="login" placeholder="Nom d'utilisateur" required />
 
-            <label for="psw"><b>Mot de passe</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                <label for="psw"><b>Mot de passe</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-            <label for="psw-repeat"><b>Confirmation du mot de passe</b></label>
-            <input type="password" placeholder="Confirmer" name="psw-repeat" id="psw-repeat" required>
+                <label for="psw-repeat"><b>Confirmation du mot de passe</b></label>
+                <input type="password" placeholder="Confirmer" name="psw-repeat" id="psw-repeat" required>
 
-            <hr>
+                <hr>
 
-            <button type="submit" class="registerbtn">Inscription</button>
-        </div>
-        <div class="container signin">
-            <p class="box-register">Déjà inscrit? <a href="connexion.php">Connectez-vous ici</a></p>
-        </div>
-    </form>
+                <button type="submit" class="registerbtn">Inscription</button>
+            </div>
+            <div class="container signin">
+                <p class="box-register">Déjà inscrit? <a href="connexion.php">Connectez-vous ici</a></p>
+            </div>
+        </form>
+    </div>
 <?php }
 include '../assets/require/footer.php'; ?>

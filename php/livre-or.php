@@ -3,10 +3,15 @@
 $title = 'Livre d\'or';
 include '../assets/require/header.php';
 require '../assets/require/config.php';
+?>
+<div class="content-area">
+<h1>Livre d'or</h1>
+<p>Voici les commentaires de nos clients:</p>
 
+
+<?php
 /********************************************************************************************************** */
 //Affichage des messages du livre d'or//
-
 $req = mysqli_query($conn, "SELECT commentaires.date, commentaires.commentaire, utilisateurs.login FROM commentaires INNER JOIN utilisateurs ON commentaires.id_utilisateur = utilisateurs.id ORDER BY commentaires.date DESC");
 $nbLignes = mysqli_num_rows($req);
 
@@ -24,13 +29,6 @@ if ($nbLignes > 0) {
 } else {
     echo "Aucun message n'a été publié pour le moment";
 }
-/********************************************************************************************************** */
-
-
-
-/********************************************************************************************************** */
-
-
-
-/********************************************************************************************************** */
-include '../assets/require/footer.php'; ?>
+?>
+</div>
+<?php include '../assets/require/footer.php'; ?>

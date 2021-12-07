@@ -16,37 +16,36 @@ if (isset($_POST['login'])) {
 
     if (isset($result)) {
         $user = mysqli_fetch_assoc($result);
-
-        if ($user['type'] == 'admin') {
-            session_start();
-            $_SESSION['id'] = $user['id'];
-            header('location: admin.php');
-        } else {
-            session_start();
-            $_SESSION['id'] = $user['id'];
-            header('location: commentaire.php');
-        }
-    } else {
-        $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
+        session_start();
+        $_SESSION['id'] = $user['id'];
+        header('location: profil.php');
     }
+} else {
+    $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
 }
+
 ?>
-<div class="content-area">
+<main class="container">
     <form action="" method="post">
-        <h1 class="box-title">Connexion</h1>
+        <div class="imgcontainer">
+            <img src="../assets/images/login.png" alt="Avatar" class="avatar">
+        </div>
 
-        <input type="text" class="box-input" name="login" placeholder="Nom d'utilisateur">
+        <div class="container">
+            <h1 class="box-title">Connexion</h1>
 
-        <input type="password" class="box-input" name="password" placeholder="Mot de passe">
+            <input type="text" class="box-input" name="login" placeholder="Nom d'utilisateur">
 
-        <input type="submit" value="Connexion " name="submit" class="box-button">
+            <input type="password" class="box-input" name="password" placeholder="Mot de passe">
 
-        <p class="box-register">Vous êtes nouveau ici? <a href="inscription.php">S'inscrire</a></p>
-
-        <?php if (!empty($message)) { ?>
-            <p class="errorMessage"><?php echo $message; ?></p>
-
+            <button type="submit" class="registerbtn">Connexion</button>
+            <div class="container2 bottom">
+            <p>Vous êtes nouveau ici? <a href="inscription.php">S'inscrire</a></p>
+            <?php if (!empty($message)) { ?>
+                <p class="errorMessage"><?php echo $message; ?></p></div>
+        </div>
     </form>
-</div>
+</main>
+
 <?php }
-        include '../assets/require/footer.php'; ?>
+            include '../assets/require/footer.php'; ?>

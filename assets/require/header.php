@@ -16,19 +16,17 @@
 </head>
 
 <body>
-        <div class="box-area">
             <header>
                 <div class="wrapper">
                     <nav>
-                        <a href="http://localhost/livre-or/php/livre-or.php">Livre d'or</a>
                         <a href="http://localhost/livre-or/index.php">Accueil</a>
-                        <a href="#http://localhost/livre-or/php/inscription.php">Contact</a>
+                        <a href="http://localhost/livre-or/php/livre-or.php">Livre d'or</a>
+                        <a href="#">Contact</a>
                         <a href="http://localhost/livre-or/php/connexion.php">Connexion</a>
                         <a href="http://localhost/livre-or/php/inscription.php">Inscription</a>
                     </nav>
                 </div>
             </header>
 
-        </div>
 
        

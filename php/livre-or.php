@@ -3,20 +3,14 @@
 $title = 'Livre d\'or';
 include '../assets/require/header.php';
 require '../assets/require/config.php';
-
-// Initialiser la session
-session_start();
-// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
-
 ?>
 
 <main>
 <h1>Livre d'or</h1>
 <h3>Voici les commentaires de nos clients:</h3>
 
-
 <?php
-/***********************************************************************************************************/
+
 //Affichage des messages du livre d'or//
 $req = mysqli_query($conn, "SELECT commentaires.date, commentaires.commentaire, utilisateurs.login FROM commentaires INNER JOIN utilisateurs ON commentaires.id_utilisateur = utilisateurs.id ORDER BY commentaires.date DESC");
 $nbLignes = mysqli_num_rows($req);
@@ -36,5 +30,6 @@ if ($nbLignes > 0) {
     echo "Aucun message n'a été publié pour le moment";
 }
 ?>
+<p>Veuillez vous connecter pour laisser un <a href="connexion.php">commentaire</p>
 </main>
 <?php include '../assets/require/footer.php'; ?>

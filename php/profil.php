@@ -67,8 +67,8 @@ if (isset($_REQUEST['login'], $_REQUEST['password'])) {
                         <button type="submit" class="registerbtn">Modification</button>
 
                         <div class="container2 bottom">
-                            <p class="box-register"><a href="connexion.php">Déconnexion</a></p>
-                            <p class="box-register">Voulez-vous laisser un commentaire dans notre livre d'or? <a href="commentaire.php">C'est ici</a></p>
+                            <p><a href="connexion.php">Déconnexion</a></p>
+                            <p>Voulez-vous laisser un commentaire dans notre livre d'or? <a href="commentaire.php">C'est ici</a></p>
                         </div>
 
                     </div>

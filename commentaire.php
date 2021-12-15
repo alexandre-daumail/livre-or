@@ -1,12 +1,9 @@
 <?php
 $title = 'Ajouter un commentaire';
-include'../assets/require/header.php';
-require'../assets/require/config.php';
-
-session_start();
+include_once 'header.php';
 
 // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
-if (!isset($_SESSION["id"])) {
+if (!isset($_SESSION["login"])) {
     header("Location: connexion.php");
     exit();
 }
@@ -16,11 +13,11 @@ if (!isset($_SESSION["id"])) {
     <h1>Bienvenue dans l'espace commentaire</h1>
     <fieldset>
         <legend>Ajouter un commentaire au livre d'or</legend>
-        <form action="../assets/traitements/submit.php" method="post">
+        <form action="assets/includes/commentaire.inc.php" method="post">
             <label for="text">Votre commentaire : </label>
             <textarea id="text" type="text" name="comm"></textarea>
-            <input type="submit" name="envoyer" value="Envoyer">
+            <input type="submit" name="submit" value="Envoyer">
         </form>
     </fieldset>
 </main>
-<?php include '../assets/require/footer.php'; ?>
+<?php include 'footer.php'; ?>

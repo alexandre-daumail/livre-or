@@ -1,11 +1,8 @@
 </head>
 <?php
 $title = 'Page de profil';
-include '../assets/require/header.php';
-require '../assets/require/config.php';
-
-// Initialiser la session
-session_start();
+include_once 'header.php';
+include_once 'assets/includes/dbh.inc.php';
 // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if (!isset($_SESSION["id"])) {
     header("Location: connexion.php");
@@ -49,7 +46,7 @@ if (isset($_REQUEST['login'], $_REQUEST['password'])) {
             <div class="content-area">
                 <form action="" method="post">
                     <div class="imgcontainer">
-                        <img src="../assets/images/login.png" alt="Avatar" class="avatar">
+                        <img src="assets/images/login.png" alt="Avatar" class="avatar">
                     </div>
 
                     <div class="container2">
@@ -67,7 +64,7 @@ if (isset($_REQUEST['login'], $_REQUEST['password'])) {
                         <button type="submit" class="registerbtn">Modification</button>
 
                         <div class="container2 bottom">
-                            <p><a href="connexion.php">Déconnexion</a></p>
+                            <p><a href="assets/include/logout.inc.php">Déconnexion</a></p>
                             <p>Voulez-vous laisser un commentaire dans notre livre d'or? <a href="commentaire.php">C'est ici</a></p>
                         </div>
 
@@ -76,4 +73,4 @@ if (isset($_REQUEST['login'], $_REQUEST['password'])) {
             </div>
         </main>
     <?php }
-include '../assets/require/footer.php'; ?>
+include 'footer.php'; ?>

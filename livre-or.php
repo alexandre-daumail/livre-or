@@ -1,8 +1,9 @@
 
 <?php
-$title = 'Livre d\'or';
-include '../assets/require/header.php';
-require '../assets/require/config.php';
+$title = "Livre d'or";
+include_once 'header.php';
+include_once 'assets/includes/dbh.inc.php';
+
 ?>
 
 <main>
@@ -29,7 +30,21 @@ if ($nbLignes > 0) {
 } else {
     echo "Aucun message n'a été publié pour le moment";
 }
+if (isset($_SESSION["login"])){
+    ?>
+    <fieldset>
+        <legend>Ajouter un commentaire au livre d'or</legend>
+        <form action="assets/includes/commentaire.inc.php" method="post">
+            <label for="text">Votre commentaire : </label>
+            <textarea id="text" type="text" name="comm"></textarea>
+            <input type="submit" name="submit" value="Envoyer">
+        </form>
+    </fieldset>
+<?php
+}
+else{
+    echo"<p>Veuillez vous connecter pour laisser un <a href='connexion.php'>commentaire</p>";
+}
 ?>
-<p>Veuillez vous connecter pour laisser un <a href="connexion.php">commentaire</p>
 </main>
-<?php include '../assets/require/footer.php'; ?>
+<?php include_once 'footer.php'; ?>

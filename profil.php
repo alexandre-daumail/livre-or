@@ -3,11 +3,6 @@
 $title = 'Page de profil';
 include_once 'header.php';
 include_once 'assets/includes/dbh.inc.php';
-// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
-if (!isset($_SESSION["id"])) {
-    header("Location: connexion.php");
-    exit();
-}
 // récupérer les infos utilisateur:
 $id = $_SESSION["id"];
 $query = "SELECT * FROM `utilisateurs` WHERE id='$id'";
@@ -15,7 +10,7 @@ $result = mysqli_query($conn, $query);
 $user = mysqli_fetch_assoc($result);
 
 
-if (isset($_REQUEST['login'], $_REQUEST['password'])) {
+/* if (isset($_REQUEST['login'], $_REQUEST['password'])) {
     if ($_REQUEST['newpassword'] == $_REQUEST['conf_mdp']) {
         // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
         $login = stripslashes($_REQUEST['login']);
@@ -39,38 +34,54 @@ if (isset($_REQUEST['login'], $_REQUEST['password'])) {
         header("refresh:2; url=profil.php");
     }
 } else {
-?>
+ */?>
 
     <body>
         <main>
             <div class="content-area">
-                <form action="" method="post">
+                <form action="assets/includes/modification.inc.php" method="post">
                     <div class="imgcontainer">
                         <img src="assets/images/login.png" alt="Avatar" class="avatar">
                     </div>
 
                     <div class="container2">
                         <h1 class="box-title">Vous etes connectés en tant que : </h1>
-                        <h1><?php echo $user["login"]; ?></h1>
+                        <h2><?php echo $user["login"]; ?></h2>
+                        <hr>
 
-                        <input type="text" class="box-input" id="login" name="login" value="<?php echo $user["login"]; ?>" required />
+                        <input type="password" class="box-input" name="pwd" placeholder="Ancien mot de passe" required />
 
-                        <input type="password" class="box-input" name="password" placeholder="Ancien mot de passe" required />
-
-                        <input type="password" class="box-input" name="newpassword" placeholder="Nouveau mot de passe" required />
+                        <input type="password" class="box-input" name="new-pwd" placeholder="Nouveau mot de passe" required />
 
                         <input type="password" class="box-input" name="conf_mdp" placeholder="Confirmation nouveau mot de passe" required />
 
-                        <button type="submit" class="registerbtn">Modification</button>
+                        <button type="submit" class="registerbtn" name="submit">Modification</button>
+                        <button class="logoutbtn"><a href="assets/includes/logout.inc.php">Déconnexion</a></button>
 
                         <div class="container2 bottom">
-                            <p><a href="assets/include/logout.inc.php">Déconnexion</a></p>
-                            <p>Voulez-vous laisser un commentaire dans notre livre d'or? <a href="commentaire.php">C'est ici</a></p>
+                            <p>Laisser un commentaire dans notre <a href="commentaire.php">livre d'or</a>?</p>
                         </div>
 
                     </div>
                 </form>
             </div>
         </main>
-    <?php }
-include 'footer.php'; ?>
+    <?php 
+    if (isset($_GET["error"])) {
+        if ($_GET["error"] == "champsrequis") {
+          echo "<p>Remplissez tous les champs!</p>";
+        }
+        else if ($_GET["error"] == "pseudoincorrect") {
+          echo "<p>Choisissez un pseudo correct!</p>";
+        }
+        else if ($_GET["error"] == "mdpincorrect") {
+          echo "<p>Les mots de passe ne sont pas identiques!</p>";
+        }
+        else if ($_GET["error"] == "echecstmt") {
+          echo "<p>Problème de connexion avec la base de donnée, veuillez contacter un admin.</p>";
+        }
+        else if ($_GET["error"] == "aucune") {
+          echo "<p>Modification de profil réussie!</p>";
+        }
+      }
+include_once 'footer.php'; ?>

@@ -1,10 +1,10 @@
 <?php
 session_start();
+require_once 'dbh.inc.php';
+require_once 'functions.inc.php';
 
 if (isset($_POST["submit"])) {
 
-    require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
     $id = $_SESSION["id"];
     // récupérer le message et supprimer les antislashes ajoutés par le formulaire
     $comm = strip_tags($_REQUEST["comm"]); // j'utilise la fonction strip_tags pour qu'on ne puisse pas utiliser de balises html dans l'input

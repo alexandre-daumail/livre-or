@@ -118,29 +118,6 @@ function loginUser ($conn, $login, $pwd){
 }
 
 function modifyUser($conn, $pwd){
-
-  $loginExists = loginExists ($conn, $login);
-
-  if ($loginExists === false) {
-    header("location: ../../connexion.php?error=mauvaispseudo");
-    exit();
-  }
-
-  $pwdHashed = $loginExists["password"];
-  $checkPwd = password_verify($pwd, $pwdHashed);
-
-  if ($checkPwd === false) {
-    header("location: ../../connexion.php?error=mauvaismdp");
-    exit();
-  }
-  else if ($checkPwd === true){
-    session_start();
-    $_SESSION["id"] = $loginExists["id"];
-    $_SESSION["login"] = $loginExists["login"];
-    header("location: ../../index.php");
-    exit();
-
-  }
   
   $id = $_SESSION["id"];
   $sql = "UPDATE `utilisateurs` SET `password` = ?  

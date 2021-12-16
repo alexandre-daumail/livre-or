@@ -2,7 +2,6 @@
 $title = "Livre d'or";
 include_once 'header.php';
 include_once 'assets/includes/dbh.inc.php';
-
 ?>
 
 <main>

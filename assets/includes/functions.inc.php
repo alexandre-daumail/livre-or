@@ -116,3 +116,47 @@ function loginUser ($conn, $login, $pwd){
 
   }
 }
+
+function modifyUser($conn, $pwd){
+
+  $loginExists = loginExists ($conn, $login);
+
+  if ($loginExists === false) {
+    header("location: ../../connexion.php?error=mauvaispseudo");
+    exit();
+  }
+
+  $pwdHashed = $loginExists["password"];
+  $checkPwd = password_verify($pwd, $pwdHashed);
+
+  if ($checkPwd === false) {
+    header("location: ../../connexion.php?error=mauvaismdp");
+    exit();
+  }
+  else if ($checkPwd === true){
+    session_start();
+    $_SESSION["id"] = $loginExists["id"];
+    $_SESSION["login"] = $loginExists["login"];
+    header("location: ../../index.php");
+    exit();
+
+  }
+  
+  $id = $_SESSION["id"];
+  $sql = "UPDATE `utilisateurs` SET `password` = ?  
+  WHERE `utilisateurs`.`id` = $id;";
+
+  $stmt = mysqli_stmt_init($conn);
+  if (!mysqli_stmt_prepare($stmt, $sql)) {
+    header("location:../../profil.php?error=echecstmt");
+    exit();
+  }
+
+  $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+  mysqli_stmt_bind_param($stmt, "s", $hashedPwd);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
+  header("location: ../../profil.php?error=aucune");
+  exit();
+}

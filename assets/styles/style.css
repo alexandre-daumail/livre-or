@@ -150,6 +150,16 @@ button {
   width: 100%;
 }
 
+.logoutbtn {
+  background-color: #D45113;
+}
+
+.logoutbtn a {
+  text-decoration: none;
+  color: white;
+
+}
+
 button:hover {
   opacity: 0.8;
 }
@@ -176,10 +186,10 @@ img.avatar {
 
 span.psw {
   float: right;
-  padding-top: 16px;
+  padding-top: 5px;
 }
 .bottom {
-  background-color: #D45113;
+  background-color: #04AA6D;
   text-align: center;
 }
 .comm {
